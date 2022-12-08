@@ -73,7 +73,7 @@ class FileStorage:
         """Methode what return a object """
         if ((cls is not None) and (cls.__name__ in classes)
            and (id is not None) and (type(id) is str)):
-            key = cls + "." + str(id)
+            key = cls + '.' + id
             obj = self.__objects.get(key, None)
             return (obj)
         else:
