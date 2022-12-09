@@ -82,9 +82,7 @@ class FileStorage:
         """This is methode for count object"""
         count = 0
         if ((cls in classes) and (cls is not None)):
-            for item in self.__objects:
-                if item.__name__ == cls:
-                    count += 1
+            count = len(self.all(cls))
             return count
         else:
             return (len(self.__objects))
