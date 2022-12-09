@@ -13,15 +13,15 @@ from models.user import User
 
 dict_json = {"status": "OK"}
 
-"""classes = {
-        "amenities": Amenity,
-        "cities": City,
-        "places": Place,
-        "reviews": Review,
-        "states": State,
-        "users": User
-        }
-"""
+hbnbText = {
+        "amenities": "Amenity",
+        "cities": "City",
+        "places": "Place",
+        "reviews": "Review",
+        "states": "State",
+        "users": "User"
+ }
+
 
 @app_views.route('/status', strict_slashes=False)
 def status():
@@ -31,11 +31,7 @@ def status():
 @app_views.route('/stats', strict_slashes=False)
 def stats_objtects():
     """return amount of objet for class"""
-    classes = [Amenity, City, Place, Review, State, User]
-    names = ["amenities", "cities", "places", "reviews", "states", "users"]
-
-    num_objs = {}
-    for i in range(len(classes)):
-        num_objs[names[i]] = storage.count(classes[i])
-
-    return jsonify(num_objs)
+    return_dict = {}
+    for key, value in hbnbText.items():
+        return_dict[key] = storage.count(value)
+    return jsonify(return_dict)
