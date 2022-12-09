@@ -13,7 +13,7 @@ from models.user import User
 
 dict_json = {"status": "OK"}
 
-classes = {
+"""classes = {
         "amenities": Amenity,
         "cities": City,
         "places": Place,
@@ -21,7 +21,7 @@ classes = {
         "states": State,
         "users": User
         }
-
+"""
 
 @app_views.route('/status', strict_slashes=False)
 def status():
@@ -31,10 +31,17 @@ def status():
 @app_views.route('/stats', strict_slashes=False)
 def stats_objtects():
     """return amount of objet for class"""
+    classes = {
+        "amenities": Amenity,
+        "cities": City,
+        "places": Place,
+        "reviews": Review,
+        "states": State,
+        "users": User
+        }
     new_dict = {}
-    cont = 0
     for key, value in classes.items():
         cont = storage.count(value)
-        new_dict.update({key: cont})
+        new_dict[key] = cont
     
     return jsonify(new_dict)
