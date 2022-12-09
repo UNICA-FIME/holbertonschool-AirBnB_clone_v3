@@ -74,7 +74,7 @@ class FileStorage:
         if (cls is not None and cls in classes
            and id is not None and type(id) is str):
             key = cls + '.' + id
-            obj = self.__objects.get(key, None)
+            obj = self.__objects[key]
             return (obj)
         else:
             return None
