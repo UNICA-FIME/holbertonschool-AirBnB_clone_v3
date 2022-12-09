@@ -73,9 +73,9 @@ class FileStorage:
         """Methode what return a object """
         if (cls is not None and cls in classes
            and id is not None and type(id) is str):
-            for key, value in self.all(cls).items():
-                if value.id == id:
-                    return (value)
+            for obj in self.all(cls).values():
+                if obj.id == id:
+                    return (obj)
         else:
             return None
 
