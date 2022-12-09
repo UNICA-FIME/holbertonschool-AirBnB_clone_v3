@@ -33,6 +33,5 @@ def stats_objtects():
     """return amount of objet for class"""
     new_dict = {}
     for key, value in classes.items():
-        count = storage.count(value)
-        new_dict[key] = count
+        new_dict[key] = storage.count(value)  
     return jsonify(new_dict)
