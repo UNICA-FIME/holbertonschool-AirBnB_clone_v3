@@ -71,7 +71,6 @@ class FileStorage:
 
     def get(self, cls, id):
         """Methode what return a object """
-        print(type(id))
         if ((cls is not None) and (cls.__name__ in classes)
            and (id is not None) and (type(id) is str)):
             key = str(cls) + '.' + str(id)
