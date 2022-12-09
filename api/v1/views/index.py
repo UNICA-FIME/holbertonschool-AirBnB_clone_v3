@@ -13,7 +13,7 @@ from models.user import User
 
 dict_json = {"status": "OK"}
 
-hbnbText = {
+classes= {
         "amenities": "Amenity",
         "cities": "City",
         "places": "Place",
@@ -31,7 +31,7 @@ def status():
 @app_views.route('/stats', strict_slashes=False)
 def stats_objtects():
     """return amount of objet for class"""
-    return_dict = {}
-    for key, value in hbnbText.items():
+    new_dict = {}
+    for key, value in clasees.items():
         return_dict[key] = storage.count(value)
-    return jsonify(return_dict)
+    return jsonify(new_dict)
