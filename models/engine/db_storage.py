@@ -86,10 +86,13 @@ class DBStorage:
 
     def count(self, cls=None):
         """This a method count object"""
-        cont = 0
-        if ((cls in classes) and (cls is not None)):
-            cont = self.__session.query(cls).count()
+        all_class = classes.values()
+        
+        if not cls:
+            count = 0
+            for clas in all_class:
+                count += len(models.storage.all(clas).values())
         else:
-            for key, value in classes.items():
-                cont += self.__session.query(value).count()
-        return (cont)
+            count = len(models.storage.all(cls).values())
+
+        return count
