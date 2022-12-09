@@ -2,7 +2,7 @@
 """ Script return json"""
 from api.v1.views import app_views
 from flask import jsonify
-from models
+import models
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
