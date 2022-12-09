@@ -2,7 +2,7 @@
 """ Script return json"""
 from api.v1.views import app_views
 from flask import jsonify
-from models import storage
+from models
 from models.amenity import Amenity
 from models.city import City
 from models.place import Place
@@ -41,7 +41,7 @@ def stats_objtects():
         }
     new_dict = {}
     for key, value in classes.items():
-        cont = storage.count(value)
+        cont = models.storage.count(value)
         new_dict[key] = cont
     
     return jsonify(new_dict)
