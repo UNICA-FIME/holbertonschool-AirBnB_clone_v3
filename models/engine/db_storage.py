@@ -79,19 +79,18 @@ class DBStorage:
         """ method what return a object"""
         if cls not in classes.values():
             return None
-
+        if cls is None or id is None:
+            return None
         all_cls = models.storage.all(cls)
         for value in all_cls.values():
             print(value)
             if (value.id == id):
                 return value
 
-        return None
-
     def count(self, cls=None):
         """This a method count object"""
         all_class = classes.values()
-        
+
         if not cls:
             count = 0
             for clas in all_class:
