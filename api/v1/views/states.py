@@ -58,7 +58,7 @@ def states_post():
 def states_put(state_id):
     """Updates a State object"""
     state = storage.get(State, state_id)
-    if state is None:
+    if not state:
         abort(404)
 
     if not request.get_json():
@@ -68,6 +68,6 @@ def states_put(state_id):
     list_key = ['id', 'created_at', 'updated_at']
     for key, value in data.items():
         if key not in list_key:
-            setattr(State, key, value)
+            setattr(state, key, value)
     storage.save()
     return make_response(jsonify(state.to_dict()), 200)
