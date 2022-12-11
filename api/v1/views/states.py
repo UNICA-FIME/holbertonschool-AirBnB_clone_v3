@@ -22,7 +22,7 @@ def states_get():
 def states_get_id(state_id):
     """Retrieves the list of all State objects"""
     state = storage.get(State, state_id)
-    if state is None:
+    if not state:
         abort(404)
     return (jsonify(state.to_dict()))
 
