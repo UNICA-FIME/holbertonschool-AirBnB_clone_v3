@@ -77,12 +77,16 @@ class DBStorage:
 
     def get(self, cls, id):
         """ method what return a object"""
-        if cls is not None and id is not None and\
-           type(id) is str and cls.__name__ in classes:
-            obj = self.__session.query(cls).filter(cls.id == id).first()
-            return (obj)
-        else:
-            return (None)
+        if cls not in classes.values():
+            return None
+
+        all_cls = models.storage.all(cls)
+        for value in all_cls.values():
+            print(value)
+            if (value.id == id):
+                return value
+
+        return None
 
     def count(self, cls=None):
         """This a method count object"""
