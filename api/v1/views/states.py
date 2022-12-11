@@ -15,7 +15,7 @@ def states_get():
     list_states = []
     for item in dict_new:
         list_states.append(item.to_dict())
-    return (jsonify(list_states))
+    return jsonify(list_states)
 
 
 @app_views.route('/states/<path:state_id>', methods=['GET'], strict_slashes=False)
